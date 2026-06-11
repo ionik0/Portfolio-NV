@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export default function HubLoadingScreen({
     onFinish,
 }: {
-    onFinish: () => void;
+    onFinish?: () => void;
 }) {
     const [progress, setProgress] = useState(0);
 
@@ -30,7 +30,7 @@ export default function HubLoadingScreen({
             setProgress((prev) => {
                 if (prev >= 100) {
                     clearInterval(interval);
-                    onFinish(); // 🔥 triggers hub open
+                    onFinish?.(); // 🔥 triggers hub open (optional)
                     return 100;
                 }
                 return Math.min(prev + Math.random() * 15 + 5, 100);
@@ -38,7 +38,7 @@ export default function HubLoadingScreen({
         }, 300);
 
         return () => clearInterval(interval);
-    }, [onFinish]);
+    }, []);
 
     useEffect(() => {
         /* 
