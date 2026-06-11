@@ -3,7 +3,7 @@
 import { useState, useTransition, useEffect } from "react";
 import LoadingScreen from "@/components/loader/loading-screen";
 import ClickSpark from "@/components/ClickSpark";
-import WorldHub from "@/components/scenes/world-hub";
+import ThreejsWorld from "@/components/scenes/threejs-world";
 
 
 export default function Home() {
@@ -111,10 +111,10 @@ export default function Home() {
                     /* 
                       🔥 SCENE SWITCH:
                       - After button press animation (0.2s)
-                      - Switch from "home" → "hub"
-                      - This replaces the current UI with WorldHub component
+                      - Switch from "home" → "threejs"
+                      - This loads the Three.js scene
                     */
-                    setScene("hub");
+                    setScene("threejs");
 
                   }, 200); // 0.2s press effect
                 }}
@@ -173,13 +173,12 @@ export default function Home() {
       )}
 
       {/* 
-      🌍 SCENE: HUB
-      - Renders ONLY when scene === "hub"
-      - Completely replaces home screen visually
-      - WorldHub should contain your portal/world selection UI
+       SCENE: THREE.JS WORLD
+      - Renders ONLY when scene === "threejs"
+      - Basic 3D scene ready for customization
     */}
-      {scene === "hub" && (
-        <WorldHub setScene={setScene} />
+      {scene === "threejs" && (
+        <ThreejsWorld setScene={setScene} />
       )}
 
     </main>

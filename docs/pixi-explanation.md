@@ -1,4 +1,4 @@
-# Pixi.js in This Project
+-# Pixi.js in This Project
 
 A beginner's guide to what we've built.
 
